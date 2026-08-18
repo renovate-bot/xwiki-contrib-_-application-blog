@@ -73,28 +73,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.revapi</groupId>
-        <artifactId>revapi-maven-plugin</artifactId>
-        <configuration>
-          <analysisConfiguration><![CDATA[
-            {
-              "revapi": {
-                "ignore" : [
-                  {
-                    "code": "java.method.numberOfParametersChanged",
-                    "old": "method void org.xwiki.contrib.blog.script.BlogScriptService::migrateCategoryLocation()",
-                    "new": "method void org.xwiki.contrib.blog.script.BlogScriptService::migrateCategoryLocation(java.lang.String)",
-                    "justification": "Not a breakage, updating unstable API"
-                  }
-                ]
-              }
-            }
-          ]]></analysisConfiguration>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
   <profiles>
     <profile>
