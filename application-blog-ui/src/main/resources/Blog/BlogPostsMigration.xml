@@ -64,7 +64,8 @@ obj.name=doc.fullName and obj.className='Blog.BlogPostClass' and doc.fullName no
       #set($discard = $postDoc.save('Save post after initializing it category by the default category', true))
       #set ($discard = $logger.info('  Migration of the blog post [{}]', $post))
       #set ($migrated = true)
-      * [[$post&gt;&gt;$post]] (/)
+      #set ($escapedPost = $services.rendering.escape($post, 'xwiki/2.1'))
+      * [[$services.rendering.escape($escapedPost, 'xwiki/2.1')&gt;&gt;$escapedPost]] (/)
     #end
   #end
   #if (!$migrated)
@@ -75,7 +76,8 @@ obj.name=doc.fullName and obj.className='Blog.BlogPostClass' and doc.fullName no
   #if($results.size() &gt; 0)
     == Blog posts to migrate ($results.size()): ==
     #foreach($post in $results)
-     * [[$post&gt;&gt;$post]]
+     #set ($escapedPost = $services.rendering.escape($post, 'xwiki/2.1'))
+     * [[$services.rendering.escape($escapedPost, 'xwiki/2.1')&gt;&gt;$escapedPost]]
     #end
   #else
     {{warning}}There is no blog posts to migrate{{/warning}}
